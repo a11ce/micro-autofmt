@@ -18,6 +18,7 @@
 | :------- | :----------- |
 | C/C++    | clang-format |
 | Python   | yapf         |
+| Racket   | fmt          |
 
 ## Credits
 

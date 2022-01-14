@@ -7,7 +7,8 @@ local micro = import("micro")
 local fmtCommands = {}
 fmtCommands["python"] = "yapf -i"
 fmtCommands["c"]      = "clang-format -i"
-fmtCommands["c++"]      = "clang-format -i"
+fmtCommands["c++"]    = "clang-format -i"
+fmtCommands["racket"] = "raco fmt --width 80 --max-blank-lines 2 -i"
 
 function init()
     config.RegisterCommonOption("autofmt", "fmt-onsave", true)
