@@ -15,6 +15,7 @@
 ## Supported formatters
 
 | Language | Formatter    |
+| :------- | :----------- |
 | C/C++    | clang-format |
 | Python   | yapf         |
 
