@@ -8,6 +8,7 @@ local fmtCommands = {}
 fmtCommands["python"] = "yapf -i"
 fmtCommands["c"]      = "clang-format -i"
 fmtCommands["c++"]    = "clang-format -i"
+fmtCommands["csharp"] = "clang-format -i"
 fmtCommands["racket"] = "raco fmt --width 80 --max-blank-lines 2 -i"
 
 function init()

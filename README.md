@@ -16,7 +16,7 @@
 
 | Language | Formatter    |
 | :------- | :----------- |
-| C/C++    | clang-format |
+| C/C++/C# | clang-format |
 | Python   | yapf         |
 | Racket   | fmt          |
 
