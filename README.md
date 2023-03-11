@@ -16,9 +16,11 @@
 
 | Language | Formatter    |
 | :------- | :----------- |
-| C/C++/C# | clang-format |
-| Python   | yapf         |
-| Racket   | fmt          |
+| C/C++/C# | [clang-format](https://clang.llvm.org/docs/ClangFormat.html) |
+| Python   | [yapf](https://github.com/google/yapf) |
+| Racket   | [fmt](https://docs.racket-lang.org/fmt/index.html) |
+| JavaScript | [prettier](https://prettier.io/) |
+| Rust | [rustfmt nightly](https://github.com/rust-lang/rustfmt) |
 
 ## Credits
 
@@ -28,4 +30,4 @@ This project is intended as a replacement for the now-dead [fmt-micro](https://g
 
 All contributions are welcome by pull request or issue.
 
-micro-autofmt is licensed under GNU General Public License v3.0. See [LICENSE](../master/LICENSE) for full text.
+micro-autofmt is licensed under the GNU General Public License v3.0. See [LICENSE](../main/LICENSE) for full text.

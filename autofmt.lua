@@ -1,7 +1,8 @@
-VERSION = "1.0.0"
+VERSION = "2.0.0"
 
 local config = import("micro/config")
 local shell = import("micro/shell")
+local filepath = import("path/filepath")
 local micro = import("micro")
 
 local fmtCommands = {}
@@ -10,6 +11,8 @@ fmtCommands["c"]      = "clang-format -i"
 fmtCommands["c++"]    = "clang-format -i"
 fmtCommands["csharp"] = "clang-format -i"
 fmtCommands["racket"] = "raco fmt --width 80 --max-blank-lines 2 -i"
+fmtCommands["javascript"] = "prettier --write --loglevel silent"
+fmtCommands["rust"] = "rustfmt +nightly"
 
 function init()
     config.RegisterCommonOption("autofmt", "fmt-onsave", true)
@@ -31,7 +34,8 @@ end
 
 function doFmt(bp, fmtCmd)
     bp:Save()
-    local _, err = shell.RunCommand(fmtCmd .. " " .. bp.Buf.Path)
+    local dirPath, _ = filepath.Split(bp.Buf.AbsPath)
+    local _, err = os.execute("cd \"" .. dirPath .. "\"; " .. fmtCmd .. " " .. bp.Buf.AbsPath)
     if err ~= nil then
         micro.InfoBar():Error(err)
         return
