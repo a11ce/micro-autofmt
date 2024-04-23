@@ -13,6 +13,7 @@ fmtCommands["csharp"] = "clang-format -i"
 fmtCommands["racket"] = "raco fmt --width 80 --max-blank-lines 2 -i"
 fmtCommands["javascript"] = "prettier --write --loglevel silent"
 fmtCommands["rust"] = "rustfmt +nightly"
+fmtCommands["go"] = "gofmt -w"
 
 function init()
     config.RegisterCommonOption("autofmt", "fmt-onsave", true)
@@ -21,14 +22,14 @@ function init()
 end
 
 function onSave(bp)
-    tryFmt(bp)
+    if config.GetGlobalOption("autofmt.fmt-onsave") then
+        tryFmt(bp)
+    end
 end
 
 function tryFmt(bp)
-    if bp.Buf.Settings["fmt-onsave"] then
-        if fmtCommands[bp.Buf:FileType()] ~= nil then
-            doFmt(bp, fmtCommands[bp.Buf:FileType()])
-        end
+    if fmtCommands[bp.Buf:FileType()] ~= nil then
+        doFmt(bp, fmtCommands[bp.Buf:FileType()])
     end
 end
 
