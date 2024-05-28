@@ -6,7 +6,7 @@ local filepath = import("path/filepath")
 local micro = import("micro")
 
 local fmtCommands = {}
-fmtCommands["python"] = "yapf -i"
+fmtCommands["python"] = "ruff --fix"
 fmtCommands["c"]      = "clang-format -i"
 fmtCommands["c++"]    = "clang-format -i"
 fmtCommands["csharp"] = "clang-format -i"
