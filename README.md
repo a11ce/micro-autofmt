@@ -17,7 +17,7 @@
 | Language | Formatter    |
 | :------- | :----------- |
 | C/C++/C# | [clang-format](https://clang.llvm.org/docs/ClangFormat.html) |
-| Python   | [yapf](https://github.com/google/yapf) |
+| Python   | [ruff](https://docs.astral.sh/ruff/) |
 | Racket   | [fmt](https://docs.racket-lang.org/fmt/index.html) |
 | JavaScript | [prettier](https://prettier.io/) |
 | Rust | [rustfmt nightly](https://github.com/rust-lang/rustfmt) |
