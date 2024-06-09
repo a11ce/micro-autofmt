@@ -14,9 +14,10 @@ fmtCommands["racket"] = "raco fmt --width 80 --max-blank-lines 2 -i"
 fmtCommands["javascript"] = "prettier --write --loglevel silent"
 fmtCommands["rust"] = "rustfmt +nightly"
 
+config.RegisterCommonOption("autofmt", "fmt-onsave", true)
+
 function init()
-    config.RegisterCommonOption("autofmt", "fmt-onsave", true)
-    config.MakeCommand("fmt", tryFmt, config.NoComplete)
+    config.MakeCommand("fmt", fmtCmd, config.NoComplete)
     config.AddRuntimeFile("fmt", config.RTHelp, "help/autofmt.md")
 end
 
@@ -25,10 +26,16 @@ function onSave(bp)
 end
 
 function tryFmt(bp)
-    if bp.Buf.Settings["fmt-onsave"] then
+    if bp.Buf.Settings["autofmt.fmt-onsave"] then
         if fmtCommands[bp.Buf:FileType()] ~= nil then
             doFmt(bp, fmtCommands[bp.Buf:FileType()])
         end
+    end
+end
+
+function fmtCmd(bp)
+    if fmtCommands[bp.Buf:FileType()] ~= nil then
+        doFmt(bp, fmtCommands[bp.Buf:FileType()])
     end
 end
 
