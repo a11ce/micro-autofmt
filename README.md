@@ -10,7 +10,7 @@
 ## Usage
 
 - Run `fmt` to format the current file.
-- Files will be formatted on save, unless `fmt-onsave` is set to false (with `Ctrl-e > set fmt-onsave false`).
+- Files will be formatted on save, unless `fmt-onsave` is set to false (with `Ctrl-e > set autofmt.fmt-onsave false`).
 
 ## Supported formatters
 
