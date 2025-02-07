@@ -14,6 +14,7 @@ fmtCommands["racket"] = "raco fmt --width 80 --max-blank-lines 2 -i"
 fmtCommands["javascript"] = "prettier --write --loglevel silent"
 fmtCommands["rust"] = "rustfmt +nightly"
 fmtCommands["go"] = "gofmt -w"
+fmtCommands["solidity"] = "forge fmt"
 
 function init()
     config.RegisterCommonOption("autofmt", "fmt-onsave", true)
