@@ -14,14 +14,16 @@
 
 ## Supported formatters
 
-| Language   | Formatter                                                    |
-| :--------- | :----------------------------------------------------------- |
-| C/C++/C#   | [clang-format](https://clang.llvm.org/docs/ClangFormat.html) |
-| Python     | [yapf](https://github.com/google/yapf)                       |
-| Racket     | [fmt](https://docs.racket-lang.org/fmt/index.html)           |
-| JavaScript | [prettier](https://prettier.io/)                             |
-| Rust       | [rustfmt nightly](https://github.com/rust-lang/rustfmt)      |
-| Go         | [gofmt](https://golang.org/cmd/gofmt/)                       |
+| Language   | Formatter                                                       |
+| :--------- | :-------------------------------------------------------------- |
+| C/C++/C#   | [clang-format](https://clang.llvm.org/docs/ClangFormat.html)    |
+| Python     | [yapf](https://github.com/google/yapf)                          |
+| Racket     | [fmt](https://docs.racket-lang.org/fmt/index.html)              |
+| JavaScript | [prettier](https://prettier.io/)                                |
+| Rust       | [rustfmt nightly](https://github.com/rust-lang/rustfmt)         |
+| Go         | [gofmt](https://golang.org/cmd/gofmt/)                          |
+| Solidity   | [forge fmt](https://book.getfoundry.sh/reference/cli/forge/fmt) | 
+
 
 ## Credits
 
