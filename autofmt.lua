@@ -11,7 +11,7 @@ fmtCommands["c"]      = "clang-format -i"
 fmtCommands["c++"]    = "clang-format -i"
 fmtCommands["csharp"] = "clang-format -i"
 fmtCommands["racket"] = "raco fmt --width 80 --max-blank-lines 2 -i"
-fmtCommands["javascript"] = "prettier --write --loglevel silent"
+fmtCommands["javascript"] = "prettier --write --log-level silent"
 fmtCommands["rust"] = "rustfmt +nightly"
 fmtCommands["go"] = "gofmt -w"
 
