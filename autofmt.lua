@@ -1,4 +1,4 @@
-VERSION = "2.0.0"
+VERSION = "2.1.0"
 
 local config = import("micro/config")
 local shell = import("micro/shell")
@@ -12,18 +12,20 @@ fmtCommands["c++"]    = "clang-format -i"
 fmtCommands["csharp"] = "clang-format -i"
 fmtCommands["racket"] = "raco fmt --width 80 --max-blank-lines 2 -i"
 fmtCommands["javascript"] = "prettier --write --log-level silent"
+fmtCommands["json"] = "prettier --write --log-level silent"
 fmtCommands["rust"] = "rustfmt +nightly"
 fmtCommands["go"] = "gofmt -w"
 fmtCommands["solidity"] = "forge fmt"
 
+config.RegisterCommonOption("autofmt", "fmt-onsave", true)
+
 function init()
-    config.RegisterCommonOption("autofmt", "fmt-onsave", true)
     config.MakeCommand("fmt", tryFmt, config.NoComplete)
     config.AddRuntimeFile("fmt", config.RTHelp, "help/autofmt.md")
 end
 
 function onSave(bp)
-    if config.GetGlobalOption("autofmt.fmt-onsave") then
+    if bp.Buf.Settings["autofmt.fmt-onsave"] then
         tryFmt(bp)
     end
 end
