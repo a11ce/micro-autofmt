@@ -6,6 +6,7 @@ local micro = import("micro")
 
 
 local fmtCommands         = {}
+fmtCommands["shell"]      = "shfmt -i 2 -ci -w"
 fmtCommands["python"]     = "yapf -i"
 fmtCommands["c"]          = "clang-format -i"
 fmtCommands["c++"]        = "clang-format -i"
@@ -18,9 +19,11 @@ fmtCommands["rust"]       = "rustfmt +nightly"
 fmtCommands["go"]         = "gofmt -w"
 fmtCommands["solidity"]   = "forge fmt"
 
+function preinit()
+    config.RegisterCommonOption("autofmt", "fmt-onsave", true)
+end
 
 function init()
-    config.RegisterCommonOption("autofmt", "fmt-onsave", true)
     config.MakeCommand("fmt", tryFmt, config.NoComplete)
     config.AddRuntimeFile("fmt", config.RTHelp, "help/autofmt.md")
 end
