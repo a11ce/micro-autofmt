@@ -12,18 +12,38 @@
 - Run `fmt` to format the current file.
 - Files will be formatted on save, unless `autofmt.fmt-onsave` is set to false (with `Ctrl-e > set autofmt.fmt-onsave false`).
 
+Formatters are named command invocations. For languages with multiple formatters, choose one with `set autofmt.for-<language> <name>` (e.g. `set autofmt.for-python ruff`). Some languages have multiple formatters that run the same command with different settings, see the exact invocations below.
+
 ## Supported formatters
 
-| Language   | Formatter                                                       |
-| :--------- | :-------------------------------------------------------------- |
-| C/C++/C#   | [clang-format](https://clang.llvm.org/docs/ClangFormat.html)    |
-| Python     | [yapf](https://github.com/google/yapf)                          |
-| Racket     | [fmt](https://docs.racket-lang.org/fmt/index.html)              |
-| JavaScript | [prettier](https://prettier.io/)                                |
-| Rust       | [rustfmt nightly](https://github.com/rust-lang/rustfmt)         |
-| Go         | [gofmt](https://golang.org/cmd/gofmt/)                          |
-| Solidity   | [forge fmt](https://book.getfoundry.sh/reference/cli/forge/fmt) | 
+The first formatter listed for each language is the default.
 
+| Language   | Formatter name(s) |
+| --- | --- |
+| C/C++/C# | [clang-format](https://clang.llvm.org/docs/ClangFormat.html) |
+| Go | [gofmt](https://golang.org/cmd/gofmt/) |
+| HTML | [prettier](https://prettier.io/) |
+| JavaScript | [prettier](https://prettier.io/) |
+| JSON | [prettier](https://prettier.io/) |
+| Python | [yapf](https://github.com/google/yapf), [ruff](https://docs.astral.sh/ruff/), [black](https://black.readthedocs.io/en/stable/) |
+| Racket | [raco-fmt](https://docs.racket-lang.org/fmt/index.html) |
+| Rust | [rustfmt](https://github.com/rust-lang/rustfmt), rustfmt+nightly |
+| Solidity | [forge-fmt](https://book.getfoundry.sh/reference/cli/forge/fmt) |
+
+### Exact invocations
+
+| Name | Invocation |
+| --- | --- |
+| black | `black -q` |
+| clang-format | `clang-format -i` |
+| forge-fmt | `forge fmt` |
+| gofmt | `gofmt -w` |
+| prettier | `prettier --write --log-level silent` |
+| raco-fmt | `raco fmt --width 80 --max-blank-lines 2 -i` |
+| ruff | `ruff format -s` |
+| rustfmt | `rustfmt` |
+| rustfmt+nightly | `rustfmt +nightly` |
+| yapf | `yapf -i` |
 
 ## Credits
 

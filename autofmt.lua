@@ -1,23 +1,38 @@
 VERSION = "2.1.0"
 
 local config = import("micro/config")
-local shell = import("micro/shell")
 local filepath = import("path/filepath")
 local micro = import("micro")
 
-local fmtCommands = {}
-fmtCommands["python"] = "yapf -i"
-fmtCommands["c"]      = "clang-format -i"
-fmtCommands["c++"]    = "clang-format -i"
-fmtCommands["csharp"] = "clang-format -i"
-fmtCommands["racket"] = "raco fmt --width 80 --max-blank-lines 2 -i"
-fmtCommands["javascript"] = "prettier --write --log-level silent"
-fmtCommands["json"] = "prettier --write --log-level silent"
-fmtCommands["rust"] = "rustfmt +nightly"
-fmtCommands["go"] = "gofmt -w"
-fmtCommands["solidity"] = "forge fmt"
+local fmtNames = {}
+fmtNames["yapf"] = "yapf -i"
+fmtNames["ruff"] = "ruff format -s"
+fmtNames["black"] = "black -q"
+fmtNames["clang-format"] = "clang-format -i"
+fmtNames["prettier"] = "prettier --write --log-level silent"
+fmtNames["rustfmt"] = "rustfmt"
+fmtNames["rustfmt+nightly"] = "rustfmt +nightly"
+fmtNames["gofmt"] = "gofmt -w"
+fmtNames["raco-fmt"] = "raco fmt --width 80 --max-blank-lines 2 -i"
+fmtNames["forge-fmt"] = "forge fmt"
+
+local fmtAvailable = {}
+fmtAvailable["python"] = {"yapf", "ruff", "black"}
+fmtAvailable["c"] = {"clang-format"}
+fmtAvailable["c++"] = {"clang-format"}
+fmtAvailable["csharp"] = {"clang-format"}
+fmtAvailable["racket"] = {"raco-fmt"}
+fmtAvailable["rust"] = {"rustfmt", "rustfmt+nightly"}
+fmtAvailable["go"] = {"gofmt"}
+fmtAvailable["solidity"] = {"forge-fmt"}
+fmtAvailable["javascript"] = {"prettier"}
+fmtAvailable["json"] = {"prettier"}
+fmtAvailable["html"] = {"prettier"}
 
 config.RegisterCommonOption("autofmt", "fmt-onsave", true)
+for lang, formatters in pairs(fmtAvailable) do
+    config.RegisterCommonOption("autofmt", "for-" .. lang, formatters[1])
+end
 
 function init()
     config.MakeCommand("fmt", tryFmt, config.NoComplete)
@@ -31,9 +46,15 @@ function onSave(bp)
 end
 
 function tryFmt(bp)
-    if fmtCommands[bp.Buf:FileType()] ~= nil then
-        doFmt(bp, fmtCommands[bp.Buf:FileType()])
+    local lang = bp.Buf:FileType()
+    if fmtAvailable[lang] == nil then return end
+    local chosen = bp.Buf.Settings["autofmt.for-" .. lang]
+    local cmd = fmtNames[chosen]
+    if cmd == nil then
+        micro.InfoBar():Error("autofmt: unknown formatter '" .. chosen .. "' for " .. lang)
+        return
     end
+    doFmt(bp, cmd)
 end
 
 function doFmt(bp, fmtCmd)
