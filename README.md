@@ -1,6 +1,6 @@
 # micro-autofmt
 
-> Multi-language formatting plugin for the [Micro editor](https://github.com/zyedidia/micro)
+Multi-language formatting plugin for the [Micro editor](https://github.com/zyedidia/micro)
 
 ## Setup
 
@@ -9,8 +9,11 @@
 
 ## Usage
 
-- Run `fmt` to format the current file.
-- Files will be formatted on save, unless `autofmt.fmt-onsave` is set to false (with `Ctrl-e > set autofmt.fmt-onsave false`).
+> Commands in this section are micro commands. Use `Ctrl-e` to open the command bar inside micro. You can use `setlocal` in place of `set` to change a setting only in the current buffer.
+
+Run `fmt` to format the current file with the default/chosen formatter, or `fmt <name>` to run a specific formatter (e.g. `fmt ruff+check`).
+
+By default, files will be formatted on save. Disable with `set autofmt.onsave false`.
 
 Formatters are named command invocations. For languages with multiple formatters, choose one with `set autofmt.for-<language> <name>` (e.g. `set autofmt.for-python ruff`). Some languages have multiple formatters that run the same command with different settings, see the exact invocations below.
 

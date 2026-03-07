@@ -36,21 +36,35 @@ fmtFor["css"] = {"prettier"}
 fmtFor["lua"] = {"stylua"}
 fmtFor["nix"] = {"nixfmt"}
 
-config.RegisterCommonOption("autofmt", "fmt-onsave", true)
+config.RegisterCommonOption("autofmt", "onsave", true)
 for lang, formatters in pairs(fmtFor) do
     config.RegisterCommonOption("autofmt", "for-" .. lang, formatters[1])
 end
 
 function init()
-    config.MakeCommand("fmt", tryFmt, config.NoComplete)
+    config.MakeCommand("fmt", fmtCommand, config.NoComplete)
     config.AddRuntimeFile("fmt", config.RTHelp, "help/autofmt.md")
 end
 
 function onSave(bp)
-    if bp.Buf.Settings["autofmt.fmt-onsave"] then
+    if bp.Buf.Settings["autofmt.onsave"] then
         tryFmt(bp)
     end
 end
+
+function fmtCommand(bp, args)
+    if #args == 0 then
+        tryFmt(bp)
+        return
+    end
+    local cmd = fmtNames[args[1]]
+    if cmd == nil then
+        micro.InfoBar():Error("autofmt: unknown formatter '" .. args[1] .. "'")
+        return
+    end
+    doFmt(bp, cmd)
+end
+
 
 function tryFmt(bp)
     local lang = bp.Buf:FileType()
