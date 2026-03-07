@@ -1,14 +1,18 @@
-[{
-  "Name": "autofmt",
-  "Description": "plugin to run formatters on save",
-  "Tags": ["formatter"],
-  "Versions": [
-    {
-      "Version": "2.0.0",
-      "Url": "https://github.com/a11ce/micro-autofmt/archive/2.0.0.zip",
-      "Require": {
-        "micro": ">=2.0.8"
+[
+  {
+    "Name": "micro-autofmt",
+    "Description": "Runs formatters on save",
+    "Tags": ["formatter"],
+    "Website": "https://github.com/a11ce/micro-autofmt",
+    "License": "GNU General Public License v3",
+    "Versions": [
+      {
+        "Version": "3.0.0",
+        "Url": "https://github.com/a11ce/micro-autofmt/archive/3.0.0.zip",
+        "Require": {
+          "micro": ">=2.0.8"
+        }
       }
-    }
-  ]
-}]
+    ]
+  }
+]
