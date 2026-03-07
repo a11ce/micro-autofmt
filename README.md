@@ -21,16 +21,20 @@ The first formatter listed for each language is the default.
 | Language   | Formatter name(s) |
 | --- | --- |
 | C/C++/C# | [clang-format](https://clang.llvm.org/docs/ClangFormat.html) |
+| CSS | [prettier](https://prettier.io/) |
 | Go | [gofmt](https://golang.org/cmd/gofmt/) |
 | HTML | [prettier](https://prettier.io/) |
 | JavaScript | [prettier](https://prettier.io/) |
 | JSON | [prettier](https://prettier.io/) |
-| Python | [yapf](https://github.com/google/yapf), [ruff](https://docs.astral.sh/ruff/), [black](https://black.readthedocs.io/en/stable/) |
+| Lua | [stylua](https://github.com/JohnnyMorganz/StyLua) |
+| Nix | [nixfmt](https://github.com/NixOS/nixfmt) |
+| Python | [yapf](https://github.com/google/yapf), [ruff](https://docs.astral.sh/ruff/), ruff+check, [black](https://black.readthedocs.io/en/stable/) |
 | Racket | [raco-fmt](https://docs.racket-lang.org/fmt/index.html) |
 | Rust | [rustfmt](https://github.com/rust-lang/rustfmt), rustfmt+nightly |
 | Solidity | [forge-fmt](https://book.getfoundry.sh/reference/cli/forge/fmt) |
+| TypeScript | [prettier](https://prettier.io/) |
 
-### Exact invocations
+### Invocations
 
 | Name | Invocation |
 | --- | --- |
@@ -38,11 +42,14 @@ The first formatter listed for each language is the default.
 | clang-format | `clang-format -i` |
 | forge-fmt | `forge fmt` |
 | gofmt | `gofmt -w` |
+| nixfmt | `nixfmt` |
 | prettier | `prettier --write --log-level silent` |
 | raco-fmt | `raco fmt --width 80 --max-blank-lines 2 -i` |
 | ruff | `ruff format -s` |
+| ruff+check | `ruff check --fix` and `ruff format -s` |
 | rustfmt | `rustfmt` |
 | rustfmt+nightly | `rustfmt +nightly` |
+| stylua | `stylua` |
 | yapf | `yapf -i` |
 
 ## Credits
