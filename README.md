@@ -32,6 +32,7 @@ The first formatter listed for each language is the default.
 | JavaScript | [prettier](https://prettier.io/) |
 | JSON | [prettier](https://prettier.io/) |
 | Lua | [stylua](https://github.com/JohnnyMorganz/StyLua) |
+| Markdown | [prettier](https://prettier.io/) |
 | Nix | [nixfmt](https://github.com/NixOS/nixfmt) |
 | Python | [yapf](https://github.com/google/yapf), [ruff](https://docs.astral.sh/ruff/), ruff+check, [black](https://black.readthedocs.io/en/stable/) |
 | Racket | [raco-fmt](https://docs.racket-lang.org/fmt/index.html) |
