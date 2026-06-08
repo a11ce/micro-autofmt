@@ -35,6 +35,7 @@ fmtFor["typescript"] = {"prettier"}
 fmtFor["css"] = {"prettier"}
 fmtFor["lua"] = {"stylua"}
 fmtFor["nix"] = {"nixfmt"}
+fmtFor["markdown"] = {"prettier"}
 
 config.RegisterCommonOption("autofmt", "onsave", true)
 for lang, formatters in pairs(fmtFor) do
