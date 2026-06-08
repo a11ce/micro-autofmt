@@ -17,6 +17,8 @@ By default, files will be formatted on save. Disable with `set autofmt.onsave fa
 
 Formatters are named command invocations. For languages with multiple formatters, choose one with `set autofmt.for-<language> <name>` (e.g. `set autofmt.for-python ruff`). Some languages have multiple formatters that run the same command with different settings, see the exact invocations below.
 
+To disable automatic formatting for a particular language, set its formatter to `off` (e.g. `set autofmt.for-python off`).
+
 ## Supported formatters
 
 The first formatter listed for each language is the default.

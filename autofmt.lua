@@ -70,6 +70,7 @@ function tryFmt(bp)
     local lang = bp.Buf:FileType()
     if fmtFor[lang] == nil then return end
     local fmtName = bp.Buf.Settings["autofmt.for-" .. lang]
+    if fmtName == "off" then return end
     local cmd = fmtNames[fmtName]
     if cmd == nil then
         micro.InfoBar():Error("autofmt: unknown formatter '" .. fmtName .. "' for " .. lang)
