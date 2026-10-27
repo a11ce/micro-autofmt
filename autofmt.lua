@@ -88,7 +88,7 @@ function doFmt(bp, fmtCmd)
         cmds = {cmds}
     end
     for _, cmd in ipairs(cmds) do
-        local _, err = os.execute("cd \"" .. dirPath .. "\"; " .. cmd .. " " .. bp.Buf.AbsPath)
+        local _, err = os.execute("cd \"" .. dirPath .. "\"; " .. cmd .. " \"" .. bp.Buf.AbsPath .. "\"")
         if err ~= nil then
             micro.InfoBar():Error(err)
             return
